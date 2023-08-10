@@ -1,13 +1,11 @@
+import java.util.Objects;
+
 public class Car {
     String name;
 
     @Override
     public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", s=" + s +
-                ", capacity=" + capacity +
-                '}';
+        return "Car{" + "name='" + name + '\'' + ", s=" + s +  ", capacity=" + capacity + '}' + "\n";
     }
 
     public String getName() {
@@ -26,4 +24,16 @@ public class Car {
         this.capacity = capacity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return s == car.s && capacity == car.capacity && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, s, capacity);
+    }
 }
